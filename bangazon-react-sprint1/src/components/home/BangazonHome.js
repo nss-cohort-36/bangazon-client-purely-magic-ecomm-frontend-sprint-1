@@ -37,7 +37,8 @@ class BangazonHomepage extends Component {
     // console.log(this.props.location.state.attraction)
     return (
       <>
-        <label htmlFor="location">Choose a city to view products for sale:</label>
+        <h1>Welcome to Fangazon</h1>
+        <label htmlFor="location">Select your clan location:</label>
         <input
           onChange={this.handleInputChange}
           type="text" name="location" autoFocus required />
