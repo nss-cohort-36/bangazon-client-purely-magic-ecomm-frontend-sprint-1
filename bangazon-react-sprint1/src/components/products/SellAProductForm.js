@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import APIManager from '../../modules/APIManager'
+import { Form, Button, Container } from 'react-bootstrap';
+
 
 class SellAProductForm extends Component {
 
@@ -48,57 +50,53 @@ class SellAProductForm extends Component {
             // Create the user profile and redirect user to their profile
             APIManager.post("products", newProduct)
                 .then(() => this.props.history.push("/products"));
-                console.log(newProduct)
+            console.log(newProduct)
         }
     }
 
     render() {
         return (
             <>
-                {/* <label htmlFor="starttime">When do you want to ride {this.props.location.state.attraction.name}?</label> */}
-                <label htmlFor="name">Name of Product</label>
-                <input
-                    onChange={this.handleInputChange}
-                    type="text" name="name" id="name" autoFocus required
-                />
-                <label htmlFor="price">Price</label>
-                <input
-                    onChange={this.handleInputChange}
-                    type="text" name="price" id="price"
-                />
-                <label htmlFor="description">Description</label>
-                <input
-                    onChange={this.handleInputChange}
-                    type="text" name="description" id="description"
-                />
-                <label htmlFor="quantity">Quantity</label>
-                <input
-                    onChange={this.handleInputChange}
-                    type="text" name="quantity" id="quantity"
-                />
-                <label htmlFor="location">Location</label>
-                <input
-                    onChange={this.handleInputChange}
-                    type="text" name="location" id="location"
-                />
-                <select
-                    className="form-control"
-                    id="productType"
-                    name="productType"
-                    // value={animal.employeeId}
-                    onChange={this.handleInputChange}
-                >
-                    {this.state.producttypes.map(producttype => (
-                        <option key={producttype.id} value={producttype.id}>
-                            {producttype.name}
-                        </option>
-                    ))}
-                </select>
-                <label htmlFor="productType">Product Type</label>
-                <button onClick={this.addAProductToSell}>Submit</button>
+                <Container>
+                <Form>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Name of Product</Form.Label>
+                        <Form.Control type="text" placeholder="product name" id="name" onChange={this.handleInputChange} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control type="text" placeholder="price" id="price" onChange={this.handleInputChange} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control type="text" placeholder="description" id="description" onChange={this.handleInputChange} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control type="text" placeholder="quantity" id="quantity" onChange={this.handleInputChange} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Location</Form.Label>
+                        <Form.Control type="text" placeholder="location" id="location" onChange={this.handleInputChange} />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label>Select a Product Type</Form.Label>
+                        <Form.Control as="select" id="productType" name="productType" onChange={this.handleInputChange}>
+                            {this.state.producttypes.map(producttype => (
+                                <option key={producttype.id} value={producttype.id}>
+                                    {producttype.name}
+                                </option>
+                            ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Button onClick={this.addAProductToSell}>Submit</Button>
+                </Form>
+                </Container>
+                
             </>
         )
     }
 }
-
-export default SellAProductForm 
+    
+        
+export default SellAProductForm
