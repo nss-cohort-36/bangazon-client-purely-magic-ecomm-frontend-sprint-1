@@ -5,7 +5,6 @@ import "./ProductList.css"
 class ProductList extends Component {
 
   render() {
-      console.log(this.props, "List")
     return (
         <>
         <article className="productList">

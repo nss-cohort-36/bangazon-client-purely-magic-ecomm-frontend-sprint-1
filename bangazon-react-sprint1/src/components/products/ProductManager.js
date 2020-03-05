@@ -32,7 +32,6 @@ class ProductManager extends Component {
   }
 
   render() {
-      console.log(this.state, "Manager")
     return (
       <>
         <main className="explorer">
