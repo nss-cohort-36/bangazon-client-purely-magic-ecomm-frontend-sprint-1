@@ -11,7 +11,7 @@ class SellAProductForm extends Component {
         location: "",
         // imagePath: "",
         // createdAt: "",
-        productType: null,
+        productType: "",
         producttypes: []
     }
 
@@ -84,6 +84,7 @@ class SellAProductForm extends Component {
                 <select
                     className="form-control"
                     id="productType"
+                    name="productType"
                     // value={animal.employeeId}
                     onChange={this.handleInputChange}
                 >
