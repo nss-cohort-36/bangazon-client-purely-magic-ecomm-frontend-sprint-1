@@ -4,8 +4,10 @@ import { withRouter } from "react-router-dom"
 import BangazonHomepage from "./home/BangazonHome"
 // import ProductList from "./products/ProductList"
 import ProductManager from "./products/ProductManager"
+import ProductDetail from "./products/ProductDetail"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
+import ProductDetailView from "./products/ProductDetailView"
 import SellAProductForm from "./products/SellAProductForm"
 
 class ApplicationViews extends Component {
@@ -21,6 +23,10 @@ class ApplicationViews extends Component {
         />
         <Route exact path="/products" render={props => {
           return <ProductManager {...props} />
+        }}
+        />
+        <Route exact path="/products/:productId(\d+)" render={props => {
+          return <ProductDetailView {...props} />
         }}
         />
         <Route path="/products/new" render={(props) => {
