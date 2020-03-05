@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { FormControl } from 'react-bootstrap'
+// import { Input } from 'react-bootstrap'
+import { Input } from 'reactstrap';
+
 
 
 // import "bootstrap/dist/css/bootstrap.min.css"
@@ -8,7 +10,44 @@ import { FormControl } from 'react-bootstrap'
 
 class NavBar extends Component {
 
+  state = {
+      products : "",
+      search : ""
+  }
+
+  // const { search } = this.state;
+
+
+  componentDidMount() {
+    this.getProducts()
+  }
+
+  getProducts = (filteredProduct) => {
+    // get all products
+    // set state with new data for products
+    // if (isAuthenticated()) {
+      fetch("http://localhost:8000/products?name=filteredProduct", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${sessionStorage.getItem("bangazon_token")}`
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        // console.log("prop", this.props.products)
+        // console.log("res",response)
+        this.setState({ products: response })
+      })
+    // }
+  }
+
+  onChange = e =>{
+    this.setState({search : e.target.value});
+  }
+
+
   render() {
+      console.log(this.state, "Name")
     return (
       <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
         <ul className="nav nav-pills nav-fill">
@@ -25,7 +64,9 @@ class NavBar extends Component {
             <button className="nav-link" to="/">Sell A Product Button Renders Product Form</button>
           </li>
           <li className="nav-item">
-            <FormControl type="text" placeholder="Search Products" className="nav-item" to="/"/>
+            <input placeholder="Search Products" icon="search" onChange={this.onChange}/>
+            <button>Search</button>
+            {/* # onclick */}
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Profile</Link>
