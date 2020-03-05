@@ -6,6 +6,7 @@ import BangazonHomepage from "./home/BangazonHome"
 import ProductManager from "./products/ProductManager"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
+import SellAProductForm from "./products/SellAProductForm"
 
 class ApplicationViews extends Component {
 
@@ -22,6 +23,9 @@ class ApplicationViews extends Component {
           return <ProductManager {...props} />
         }}
         />
+        <Route path="/products/new" render={(props) => {
+          return <SellAProductForm {...props} />
+        }} />
         <Route
           path="/register" render={props => {
             return <Register {...props} />

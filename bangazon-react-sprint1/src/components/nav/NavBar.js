@@ -19,7 +19,11 @@ class NavBar extends Component {
             <Link className="nav-link" to="/">Orders</Link>
           </li>
           <li className="nav-item">
-            <button className="nav-link" to="/">Sell A Product Button Renders Product Form</button>
+            <button type="button"
+              className="nav-item"
+              onClick={() => { this.props.history.push("/products/new") }}>
+              Sell A Product
+                        </button>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Search Bar To Product List</Link>
