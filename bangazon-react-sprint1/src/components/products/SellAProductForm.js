@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import APIManager from '../../modules/APIManager'
+import ApiManager from '../../modules/ApiManager'
 
 class SellAProductForm extends Component {
 
@@ -46,7 +46,7 @@ class SellAProductForm extends Component {
                 productType_id: this.state.productType
             }
             // Create the user profile and redirect user to their profile
-            APIManager.post("products", newProduct)
+            ApiManager.post("products", newProduct)
                 .then(() => this.props.history.push("/products"));
                 console.log(newProduct)
         }
