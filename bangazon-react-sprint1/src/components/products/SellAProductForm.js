@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import ApiManager from '../../modules/ApiManager'
+import APIManager from '../../modules/APIManager'
 
 class SellAProductForm extends Component {
 
@@ -17,7 +17,7 @@ class SellAProductForm extends Component {
 
     componentDidMount() {
         // Gets all product types, then sets them in state to load the dropdown later
-        ApiManager.getAll("producttypes")
+        APIManager.getAll("producttypes")
             .then((response) => {
                 this.setState({
                     producttypes: response
@@ -46,7 +46,7 @@ class SellAProductForm extends Component {
                 productType_id: this.state.productType
             }
             // Create the user profile and redirect user to their profile
-            ApiManager.post("products", newProduct)
+            APIManager.post("products", newProduct)
                 .then(() => this.props.history.push("/products"));
                 console.log(newProduct)
         }
