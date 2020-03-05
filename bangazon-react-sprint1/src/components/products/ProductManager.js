@@ -35,7 +35,7 @@ class ProductManager extends Component {
     return (
       <>
         <main className="explorer">
-          <ProductList products={this.state.products} />
+          <ProductList products={this.state.products} {...this.props}/>
         </main>
       </>
     )

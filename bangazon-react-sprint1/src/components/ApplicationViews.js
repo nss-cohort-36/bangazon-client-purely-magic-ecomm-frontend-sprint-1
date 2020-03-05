@@ -7,6 +7,7 @@ import ProductManager from "./products/ProductManager"
 import ProductDetail from "./products/ProductDetail"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
+import ProductDetailView from "./products/ProductDetailView"
 
 class ApplicationViews extends Component {
 
@@ -24,7 +25,7 @@ class ApplicationViews extends Component {
         }}
         />
         <Route exact path="/products/:productId(\d+)" render={props => {
-          return <ProductDetail {...props} />
+          return <ProductDetailView {...props} />
         }}
         />
         <Route

@@ -13,6 +13,7 @@ class ProductList extends Component {
               <Product
                 key={product.id}                
                 product={product}
+                {...this.props}
               />)
           }
         </article>
