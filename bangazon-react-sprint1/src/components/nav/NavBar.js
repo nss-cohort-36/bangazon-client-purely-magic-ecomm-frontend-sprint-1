@@ -23,10 +23,11 @@ class NavBar extends Component {
   }
 
   getProducts = (filteredProduct) => {
+    //pass in filteredProducts as an argument
     // get all products
     // set state with new data for products
     // if (isAuthenticated()) {
-      fetch("http://localhost:8000/products?name=filteredProduct", {
+      fetch("http://localhost:8000/products?name=", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${sessionStorage.getItem("bangazon_token")}`
@@ -68,9 +69,8 @@ class NavBar extends Component {
                         </button>
           </li>
           <li className="nav-item">
-            <input placeholder="Search Products" icon="search" onChange={this.onChange}/>
-            <button>Search</button>
-            {/* # onclick */}
+            {/* onclick is to calling the getProducts function */}
+            <input placeholder="Search Products" icon="search" onChange={this.onChange} onClick={(this.getProducts)}/>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Profile</Link>

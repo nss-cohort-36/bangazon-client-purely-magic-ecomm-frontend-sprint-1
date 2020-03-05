@@ -4,7 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 class Product extends Component {
 
   render() {
-    console.log("props", this.props)
+    // console.log("props", this.props)
     return (
       <>
         <section className="product">
