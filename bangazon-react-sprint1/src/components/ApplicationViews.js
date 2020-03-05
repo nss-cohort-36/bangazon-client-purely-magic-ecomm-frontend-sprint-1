@@ -9,6 +9,8 @@ import Register from "./auth/Register"
 import Login from "./auth/Login"
 import ProductDetailView from "./products/ProductDetailView"
 import SellAProductForm from "./products/SellAProductForm"
+// *** Payment Type Imports ***
+import AddPaymentTypesForm from "./payments/AddPaymentTypesForm"
 
 class ApplicationViews extends Component {
 
@@ -42,6 +44,10 @@ class ApplicationViews extends Component {
             return <Login {...props} />
           }}
         />
+        {/* *** Add Payment Types *** */}
+        <Route path="/payments/new" render={(props) => {
+          return <AddPaymentTypesForm {...props} />
+        }} />
         {/* <Route
           path="/register" render={props => {
             return <Register {...props} />
