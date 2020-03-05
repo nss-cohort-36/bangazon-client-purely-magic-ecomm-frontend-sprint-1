@@ -17,7 +17,7 @@ class SellAProductForm extends Component {
 
     componentDidMount() {
         // Gets all product types, then sets them in state to load the dropdown later
-        APIManager.getAll("producttypes")
+        ApiManager.getAll("producttypes")
             .then((response) => {
                 this.setState({
                     producttypes: response
