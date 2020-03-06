@@ -1,5 +1,5 @@
 import React, { Component } from 'react' // imports the React library
-import { Link } from "react-router-dom"; // allows React and any links in the code to communicate with the DOM
+
 
 class PaymentTypesCard extends Component {
   render() {
