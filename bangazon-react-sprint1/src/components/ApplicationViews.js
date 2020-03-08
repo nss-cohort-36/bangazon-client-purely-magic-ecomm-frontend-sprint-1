@@ -11,8 +11,13 @@ import ProductDetailView from "./products/ProductDetailView"
 import SellAProductForm from "./products/SellAProductForm"
 
 class ApplicationViews extends Component {
+  
 
+
+  
+  //passing props from BB to productManager
   render() {
+    console.log(this.state, "AppView")
     return (
       <React.Fragment>
         <Route
@@ -22,7 +27,7 @@ class ApplicationViews extends Component {
           }}
         />
         <Route exact path="/products" render={props => {
-          return <ProductManager {...props} />
+          return <ProductManager {...props} completedSearch={this.props.completedSearch} filteredProducts={this.props.filteredProducts}/>
         }}
         />
         <Route exact path="/products/:productId(\d+)" render={props => {

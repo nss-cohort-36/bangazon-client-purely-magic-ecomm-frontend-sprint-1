@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 // import { Input } from 'react-bootstrap'
-import { Input } from 'reactstrap';
+
 
 
 
@@ -22,12 +22,10 @@ class NavBar extends Component {
     this.getProducts()
   }
 
-  getProducts = (filteredProduct) => {
-    //pass in filteredProducts as an argument
-    // get all products
-    // set state with new data for products
+  getProducts = () => {
+    // query parameter that fetches all products with filter for name
     // if (isAuthenticated()) {
-      fetch("http://localhost:8000/products?name=", {
+      fetch(`http://localhost:8000/products?name=${this.state.search}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${sessionStorage.getItem("bangazon_token")}`
@@ -37,6 +35,7 @@ class NavBar extends Component {
       .then(response => {
         // console.log("prop", this.props.products)
         // console.log("res",response)
+        //setting state with the products from the fetch
         this.setState({ products: response })
       })
     // }
@@ -69,8 +68,10 @@ class NavBar extends Component {
                         </button>
           </li>
           <li className="nav-item">
-            {/* onclick is to calling the getProducts function */}
-            <input placeholder="Search Products" icon="search" onChange={this.onChange} onClick={(this.getProducts)}/>
+            {/* onclick is to calling the getProducts function to match the search */}
+            {/* {grabbing props that from the parent component BB.  passing to bb through function} */}
+            <input placeholder="Search Products" icon="search" onChange={this.onChange} />
+            <button onClick={() => this.props.searchResults(this.state.search)}>Search</button>/>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Profile</Link>
