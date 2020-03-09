@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 class Product extends Component {
 
