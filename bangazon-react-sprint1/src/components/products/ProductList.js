@@ -15,7 +15,7 @@ class ProductList extends Component {
                 product={product}
                 {...this.props}
               />)
-          }
+            }
         </article>
       </>
     )
