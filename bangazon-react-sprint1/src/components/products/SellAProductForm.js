@@ -88,7 +88,7 @@ class SellAProductForm extends Component {
         return (
 
             <>
-                <Container style={{ "margin-top": "100px" }}>
+                <Container style={{ "marginTop": "100px" }}>
                     <h1 style={{ "textAlign": "center" }}>Enter a Product to Sell:</h1>
                     <Form>
                         <Form.Group>
