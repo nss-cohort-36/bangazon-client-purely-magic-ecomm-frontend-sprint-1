@@ -57,46 +57,41 @@ class SellAProductForm extends Component {
     render() {
         return (
             <>
-                <Container>
-                <Form>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Name of Product</Form.Label>
-                        <Form.Control type="text" placeholder="product name" id="name" onChange={this.handleInputChange} />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Price</Form.Label>
-                        <Form.Control type="text" placeholder="price" id="price" onChange={this.handleInputChange} />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" placeholder="description" id="description" onChange={this.handleInputChange} />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Quantity</Form.Label>
-                        <Form.Control type="text" placeholder="quantity" id="quantity" onChange={this.handleInputChange} />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Location</Form.Label>
-                        <Form.Control type="text" placeholder="location" id="location" onChange={this.handleInputChange} />
-                    </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label>Select a Product Type</Form.Label>
-                        <Form.Control as="select" id="productType" name="productType" onChange={this.handleInputChange}>
-                            {this.state.producttypes.map(producttype => (
-                                <option key={producttype.id} value={producttype.id}>
-                                    {producttype.name}
-                                </option>
-                            ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Button onClick={this.addAProductToSell}>Submit</Button>
-                </Form>
+                <Container style={{"margin-top": "100px"}}>
+                    <Form>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Product Name" id="name" name="name" onChange={this.handleInputChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Price" id="price" name="price" onChange={this.handleInputChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Description" id="description" name="description" onChange={this.handleInputChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Quantity" id="quantity" name="quantity" onChange={this.handleInputChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Location" id="location" name="location" onChange={this.handleInputChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Select a Product Type</Form.Label>
+                            <Form.Control as="select" id="productType" name="productType" onChange={this.handleInputChange}>
+                                {this.state.producttypes.map(producttype => (
+                                    <option key={producttype.id} value={producttype.id}>
+                                        {producttype.name}
+                                    </option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                        <Button onClick={this.addAProductToSell}>Submit</Button>
+                    </Form>
                 </Container>
-                
+
             </>
         )
     }
 }
-    
-        
+
+
 export default SellAProductForm
