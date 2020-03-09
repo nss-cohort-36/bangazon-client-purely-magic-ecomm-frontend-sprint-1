@@ -32,6 +32,7 @@ class ProductDetailView extends Component {
       }
 
   render() {
+    console.log(this.props, "corri")
     return (
       <>
         <main className="explorer">

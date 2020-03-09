@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 class Product extends Component {
 
   render() {
-    console.log("props", this.props)
+    
     return (
       <>
         <section className="product">

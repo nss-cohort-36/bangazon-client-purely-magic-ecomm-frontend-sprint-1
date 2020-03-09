@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { FormControl } from 'react-bootstrap'
+// import { Input } from 'react-bootstrap'
+
+
 
 
 // import "bootstrap/dist/css/bootstrap.min.css"
@@ -8,7 +10,44 @@ import { FormControl } from 'react-bootstrap'
 
 class NavBar extends Component {
 
+  state = {
+      products : "",
+      search : ""
+  }
+
+  // const { search } = this.state;
+
+
+  componentDidMount() {
+    this.getProducts()
+  }
+
+  getProducts = () => {
+    // query parameter that fetches all products with filter for name
+    // if (isAuthenticated()) {
+      fetch(`http://localhost:8000/products?name=${this.state.search}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${sessionStorage.getItem("bangazon_token")}`
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        // console.log("prop", this.props.products)
+        // console.log("res",response)
+        //setting state with the products from the fetch
+        this.setState({ products: response })
+      })
+    // }
+  }
+
+  onChange = e =>{
+    this.setState({search : e.target.value});
+  }
+
+
   render() {
+      console.log(this.state, "Name")
     return (
       <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
         <ul className="nav nav-pills nav-fill">
@@ -29,7 +68,10 @@ class NavBar extends Component {
                         </button>
           </li>
           <li className="nav-item">
-            <FormControl type="text" placeholder="Search Products" className="nav-item" to="/"/>
+            {/* onclick is to calling the getProducts function to match the search */}
+            {/* {grabbing props that from the parent component BB.  passing to bb through function} */}
+            <input placeholder="Search Products" icon="search" onChange={this.onChange} />
+            <button onClick={() => this.props.searchResults(this.state.search)}>Search</button>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Profile</Link>
