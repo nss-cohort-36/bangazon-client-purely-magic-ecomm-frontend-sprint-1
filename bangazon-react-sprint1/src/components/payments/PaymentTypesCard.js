@@ -14,5 +14,15 @@ class PaymentTypesCard extends Component {
     );
   }
 }
-
+{/* <>
+  <Card border="primary" style={{ width: '18rem' }}>
+    <Card.Header>Payment Method</Card.Header>
+    <Card.Body>
+      <Card.Title>{this.props.paymenttype.merchantName}</Card.Title>
+      <Card.Text>
+        Expires on: {this.props.paymenttype.expirationDate}
+      </Card.Text>
+    </Card.Body>
+  </Card>
+  <br /> */}
 export default PaymentTypesCard;

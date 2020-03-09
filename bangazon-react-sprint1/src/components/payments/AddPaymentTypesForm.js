@@ -40,8 +40,8 @@ class AddPaymentTypesForm extends React.Component {
 
       // Create the payment type and redirect user to payment type list
       // Makes a fetch call with newUser object as the body of the POST request
-      APIManager.post("payment_types", newPaymentType)
-      .then(() => this.props.history.push("/myprofile"))
+      // APIManager.post("paymenttypes", newpaymenttype)
+      // .then(() => this.props.history.push("/myaccount"))
     }
   };
   
