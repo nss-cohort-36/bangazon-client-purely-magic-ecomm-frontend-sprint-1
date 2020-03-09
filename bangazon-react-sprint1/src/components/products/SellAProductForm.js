@@ -11,9 +11,9 @@ class SellAProductForm extends Component {
         description: "",
         quantity: null,
         location: "",
-        // imagePath: "",
         // createdAt: "",
         productType: "",
+        imagePath: "",
         producttypes: []
     }
 
@@ -33,6 +33,29 @@ class SellAProductForm extends Component {
         this.setState(stateToChange)
     }
 
+    // _handleSubmit(e) {
+    //     e.preventDefault();
+    //     // TODO: do something with -> this.state.file
+    //     console.log('handle uploading-', this.state.file);
+    // }
+
+    _handleImageChange(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result,
+                imagePath: reader.result
+            });
+        }
+
+        reader.readAsDataURL(file)
+    }
+
     addAProductToSell = evt => {
         evt.preventDefault();
         if (this.state.productType === "") {
@@ -44,6 +67,8 @@ class SellAProductForm extends Component {
                 description: this.state.description,
                 quantity: Number(this.state.quantity),
                 location: this.state.location,
+                imagePath: this.state.imagePath,
+                // this.state = { file: '', imagePreviewUrl: '' },
                 // createdAt: this.state.createdAt, 
                 productType_id: this.state.productType
             }
@@ -53,13 +78,20 @@ class SellAProductForm extends Component {
             console.log(newProduct)
         }
     }
-    
+
     render() {
+        let { imagePreviewUrl } = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+            $imagePreview = (<img src={imagePreviewUrl} style={{"max-width": "100%"}}/>);
+        } else {
+            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        }
         return (
-            
+
             <>
-                <Container style={{"margin-top": "100px"}}>
-                    <h1 style={{"textAlign": "center"}}>Enter a Product to Sell:</h1>
+                <Container style={{ "margin-top": "100px" }}>
+                    <h1 style={{ "textAlign": "center" }}>Enter a Product to Sell:</h1>
                     <Form>
                         <Form.Group>
                             <Form.Control type="text" placeholder="Product Name" id="name" name="name" onChange={this.handleInputChange} />
@@ -77,9 +109,9 @@ class SellAProductForm extends Component {
                             <Form.Control type="text" placeholder="Location" id="location" name="location" onChange={this.handleInputChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Select a Product Type</Form.Label>
+                            <Form.Label>Select a Product Type: </Form.Label>
                             <Form.Control as="select" id="productType" name="productType" onChange={this.handleInputChange}>
-                                    <option value=''>Select...</option>
+                                <option value=''>Select...</option>
                                 {this.state.producttypes.map(producttype => (
                                     <option key={producttype.id} value={producttype.id}>
                                         {producttype.name}
@@ -87,10 +119,22 @@ class SellAProductForm extends Component {
                                 ))}
                             </Form.Control>
                         </Form.Group>
-                        <Button onClick={this.addAProductToSell}>Submit</Button>
+
+                        <Form.Group className="previewComponent">
+                                <Form.Control 
+                                    className="fileInput"
+                                    id="imagePath"
+                                    name="imagePath"
+                                    type="file"
+                                    onChange={(e) => this._handleImageChange(e)} />
+                                <div className="imgPreview">
+                                    {$imagePreview}
+                                </div>
+                        </Form.Group>
+
+                        <Button onClick={this.addAProductToSell} onSubmit={(e) => this._handleSubmit(e)}>Submit</Button>
                     </Form>
                 </Container>
-
             </>
         )
     }
