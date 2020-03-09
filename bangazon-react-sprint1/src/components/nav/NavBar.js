@@ -71,7 +71,7 @@ class NavBar extends Component {
             {/* onclick is to calling the getProducts function to match the search */}
             {/* {grabbing props that from the parent component BB.  passing to bb through function} */}
             <input placeholder="Search Products" icon="search" onChange={this.onChange} />
-            <button onClick={() => this.props.searchResults(this.state.search)}>Search</button>/>
+            <button onClick={() => this.props.searchResults(this.state.search)}>Search</button>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">Profile</Link>
