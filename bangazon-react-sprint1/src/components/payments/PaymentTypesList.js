@@ -43,7 +43,7 @@ class PaymentTypesList extends Component {
           <button type="button"
             className="btn"
             onClick={() => { this.props.history.push("/payments/new") }}>
-            Admit Animal
+           Payment Type
           </button>
         </section>
         <div className="container-cards">
