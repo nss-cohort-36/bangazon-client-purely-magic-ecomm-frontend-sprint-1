@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import ProductList from "./ProductList"
 import NavBar from "../nav/NavBar"
+import Product from "./ProductCard"
+
 // import { isAuthenticated } from "../helpers/simpleAuth"
 
 class ProductManager extends Component {
@@ -32,14 +34,16 @@ class ProductManager extends Component {
     // }
   }
 
+
+
   render() {
       console.log(this.props.filteredProducts, "filterProducts")
+      console.log(this.state.products, "products")
     return (
+            
       <>
         <main className="explorer">
-          <ProductList products={this.state.products} />
-          
-
+          <ProductList products={this.state.products} completedSearch={this.props.completedSearch} filteredProducts={this.props.filteredProducts} />   
         </main>
       </>
     )

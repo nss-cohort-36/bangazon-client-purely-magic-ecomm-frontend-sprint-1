@@ -6,17 +6,35 @@ class ProductList extends Component {
 
   render() {
     return (
-        <>
-        <article className="productList">
-          {
-            this.props.products.map(product =>
-              <Product
-                key={product.id}                
-                product={product}
-                {...this.props}
-              />)
+      <>
+        {(this.props.completedSearch)
+          ?
+          <article className="productList">
+            {
+              this.props.filteredProducts.map(filteredProduct => 
+                <Product
+                  key={filteredProduct.id}
+                  product={filteredProduct}
+                  {...this.props}
+                />)
+              
             }
-        </article>
+          
+          </article>
+          :
+          <article className="productList">
+            {
+              this.props.products.map(product => 
+                <Product
+                  key={product.id}
+                  product={product}
+                  {...this.props}
+                />)
+              
+            }
+          </article>
+
+        }
       </>
     )
   }
