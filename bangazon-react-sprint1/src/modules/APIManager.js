@@ -9,8 +9,8 @@ export default {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
             }
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
+
     },
     get(endpoint, id) {
         return fetch(`${remoteURL}/${endpoint}/${id}`, {

@@ -10,14 +10,14 @@ class PaymentTypesList extends Component {
   }
 
   componentDidMount() {
-    //getAll from AnimalManager and hang on to that data; put it in state
+    //getAll from APIManager and hang on to that data; put it in state
     APIManager.getAll("paymenttypes")
       .then((paymentsArray) => {
         this.setState({
           paymenttypes: paymentsArray
-        })
+        },() =>console.log(this.state.paymenttypes, "payment types"))
       })
-      console.log(this.state.paymenttypes, "payment types")
+      
   }
 
   deletePayment = id => {
