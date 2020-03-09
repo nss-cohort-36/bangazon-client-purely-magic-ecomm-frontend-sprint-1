@@ -1,3 +1,4 @@
+// author: Caroline Brownlee
 import React, { Component } from "react"
 import APIManager from '../../modules/APIManager'
 import { Form, Button, Container } from 'react-bootstrap';
