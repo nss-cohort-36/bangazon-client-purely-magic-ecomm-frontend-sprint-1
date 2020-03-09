@@ -53,11 +53,13 @@ class SellAProductForm extends Component {
             console.log(newProduct)
         }
     }
-
+    
     render() {
         return (
+            
             <>
                 <Container style={{"margin-top": "100px"}}>
+                    <h1 style={{"textAlign": "center"}}>Enter a Product to Sell:</h1>
                     <Form>
                         <Form.Group>
                             <Form.Control type="text" placeholder="Product Name" id="name" name="name" onChange={this.handleInputChange} />
@@ -77,6 +79,7 @@ class SellAProductForm extends Component {
                         <Form.Group>
                             <Form.Label>Select a Product Type</Form.Label>
                             <Form.Control as="select" id="productType" name="productType" onChange={this.handleInputChange}>
+                                    <option value=''>Select...</option>
                                 {this.state.producttypes.map(producttype => (
                                     <option key={producttype.id} value={producttype.id}>
                                         {producttype.name}
