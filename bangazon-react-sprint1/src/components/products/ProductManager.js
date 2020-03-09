@@ -43,7 +43,7 @@ class ProductManager extends Component {
             
       <>
         <main className="explorer">
-          <ProductList products={this.state.products} completedSearch={this.props.completedSearch} filteredProducts={this.props.filteredProducts} />   
+          <ProductList products={this.state.products} completedSearch={this.props.completedSearch} filteredProducts={this.props.filteredProducts} {...this.props}/>   
         </main>
       </>
     )
