@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import BangazonHomepage from "./home/BangazonHome"
@@ -11,6 +11,7 @@ import ProductDetailView from "./products/ProductDetailView"
 import SellAProductForm from "./products/SellAProductForm"
 // *** Payment Type Imports ***
 import AddPaymentTypesForm from "./payments/AddPaymentTypesForm"
+import PaymentTypesList from "./payments/PaymentTypesList"
 
 class ApplicationViews extends Component {
   
@@ -52,6 +53,9 @@ class ApplicationViews extends Component {
         {/* *** Add Payment Types *** */}
         <Route path="/payments/new" render={(props) => {
           return <AddPaymentTypesForm {...props} />
+        }} />
+        <Route exact path="/payments" render={props => {
+          return <PaymentTypesList {...props} />
         }} />
         {/* <Route
           path="/register" render={props => {
