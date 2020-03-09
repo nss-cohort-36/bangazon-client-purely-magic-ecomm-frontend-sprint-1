@@ -11,7 +11,6 @@ class SellAProductForm extends Component {
         description: "",
         quantity: null,
         location: "",
-        // createdAt: "",
         productType: "",
         imagePath: "",
         producttypes: []
@@ -68,8 +67,6 @@ class SellAProductForm extends Component {
                 quantity: Number(this.state.quantity),
                 location: this.state.location,
                 imagePath: this.state.imagePath,
-                // this.state = { file: '', imagePreviewUrl: '' },
-                // createdAt: this.state.createdAt, 
                 productType_id: this.state.productType
             }
             // Create the user profile and redirect user to their profile
@@ -85,7 +82,7 @@ class SellAProductForm extends Component {
         if (imagePreviewUrl) {
             $imagePreview = (<img src={imagePreviewUrl} style={{"max-width": "100%"}}/>);
         } else {
-            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+            $imagePreview = (<div className="previewText">Please upload a photo of your item.</div>);
         }
         return (
 
@@ -94,19 +91,19 @@ class SellAProductForm extends Component {
                     <h1 style={{ "textAlign": "center" }}>Enter a Product to Sell:</h1>
                     <Form>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Product Name" id="name" name="name" onChange={this.handleInputChange} />
+                            <Form.Control type="text" placeholder="Product Name" id="name" name="name" onChange={this.handleInputChange} required/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Price" id="price" name="price" onChange={this.handleInputChange} />
+                            <Form.Control type="text" placeholder="Price" id="price" name="price" onChange={this.handleInputChange} required/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Description" id="description" name="description" onChange={this.handleInputChange} />
+                            <Form.Control type="text" placeholder="Description" id="description" name="description" onChange={this.handleInputChange} required/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Quantity" id="quantity" name="quantity" onChange={this.handleInputChange} />
+                            <Form.Control type="text" placeholder="Quantity" id="quantity" name="quantity" onChange={this.handleInputChange} required/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Location" id="location" name="location" onChange={this.handleInputChange} />
+                            <Form.Control type="text" placeholder="Location" id="location" name="location" onChange={this.handleInputChange} required/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Select a Product Type: </Form.Label>
@@ -126,7 +123,8 @@ class SellAProductForm extends Component {
                                     id="imagePath"
                                     name="imagePath"
                                     type="file"
-                                    onChange={(e) => this._handleImageChange(e)} />
+                                    onChange={(e) => this._handleImageChange(e)} 
+                                    required/>
                                 <div className="imgPreview">
                                     {$imagePreview}
                                 </div>
