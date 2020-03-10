@@ -6,8 +6,8 @@ class PaymentTypesCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h3>Payment Method: {this.props.payment.merchantName}</h3>
-          <p>Expires on: {this.props.payment.expirationDate}</p>
+          <h3>Number: {this.props.payment.number}</h3>
+          <p>Expires on: {this.props.payment.expiry}</p>
           <button type="button" onClick={() => this.props.deletePaymentType(this.payment.id)}>Delete</button>
         </div>
       </div>

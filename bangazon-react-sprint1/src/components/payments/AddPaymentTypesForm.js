@@ -16,6 +16,12 @@ class AddPaymentTypesForm extends React.Component {
   handleInputFocus = (e) => {
     this.setState({ focus: e.target.name });
   };
+
+//   handleInputChange = (event) => {
+//     let stateToChange = {}
+//     stateToChange[event.target.id] = event.target.value
+//     this.setState(stateToChange)
+// }
   
   handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,23 +31,24 @@ class AddPaymentTypesForm extends React.Component {
 
   /*  Local method for validation, set loadingStatus, create payment object, invoke the APIManager post method, and redirect to the full payment type list
   */
- handleSubmitButton = evt => {
-    evt.preventDefault();
+ handleSubmitButton = event => {
+    event.preventDefault();
+
     if (this.state.name === "" || this.state.number === "" || this.state.expiry === "" || this.state.cvc === "") {
       window.alert("Please fill out all fields");
     } else {
       this.setState({ loadingStatus: true });
-      const payment = {
-        name: this.state.name,
-        number: this.state.number,
-        expiry: this.state.expiry,
-        cvc: this.state.cvc
+      const newPaymentType = {
+        "name": this.state.name,
+        "number": this.state.number,
+        "expiry": this.state.expiry,
+        "cvc": this.state.cvc
       };
 
       // Create the payment type and redirect user to payment type list
       // Makes a fetch call with newUser object as the body of the POST request
-      // APIManager.post("paymenttypes", newpaymenttype)
-      // .then(() => this.props.history.push("/myaccount"))
+      APIManager.post("paymenttypes", newPaymentType)
+      .then(() => this.props.history.push("/payments"))
     }
   };
   

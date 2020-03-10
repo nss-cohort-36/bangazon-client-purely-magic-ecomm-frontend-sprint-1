@@ -7,6 +7,7 @@ class PaymentTypesList extends Component {
   //define what this component needs to render
   state = {
     paymenttypes: [],
+    loadingStatus: true,
   }
 
   componentDidMount() {
@@ -14,19 +15,20 @@ class PaymentTypesList extends Component {
     APIManager.getAll("paymenttypes")
       .then((paymentsArray) => {
         this.setState({
-          paymenttypes: paymentsArray
-        },() =>console.log(this.state.paymenttypes, "payment types"))
+          paymenttypes: paymentsArray,
+          loadingStatus: false
+        })
       })
       
   }
 
-  deletePayment = id => {
+  deletePaymentType = id => {
     APIManager.delete(id)
       .then(() => {
         APIManager.getAll("paymenttypes")
-          .then((newPayments) => {
+          .then((newPaymentType) => {
             this.setState({
-              paymenttypes: newPayments
+              paymenttypes: newPaymentType
             })
           })
       })
@@ -51,7 +53,7 @@ class PaymentTypesList extends Component {
             <PaymentTypesCard
               key={paymenttype.id}
               payment={paymenttype}
-              deletePayment={this.deletePayment}
+              deletePaymentType={this.deletePaymentType}
               {...this.props}
             />
           )}
